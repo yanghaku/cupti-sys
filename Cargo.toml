@@ -1,0 +1,19 @@
+[package]
+name = "cupti-sys"
+version = "0.1.0"
+edition = "2021"
+authors = ["YangBo <bo.yang@smail.nju.edu.cn>"]
+description = "Rust binding to cupti APIs"
+repository = "https://github.com/yanghaku/cupti-sys"
+keywords = ["GPGPU", "CUDA", "ffi", "GPU", "Profile"]
+license = "Apache-2.0"
+readme = "./README.md"
+categories = ["external-ffi-bindings"]
+build = "build.rs"
+links = "cupti-120"
+
+[features]
+static-link = [] # default is dynamic link
+
+[dependencies]
+cuda-driver-sys = { version = "0.3.2", git = "https://github.com/yanghaku/cuda-driver-sys", branch = "cuda-120" }
