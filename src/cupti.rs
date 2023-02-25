@@ -2808,3 +2808,2013 @@ pub enum CUpti_nvtx_api_trace_cbid {
     CUPTI_CBID_NVTX_SIZE = 50,
     CUPTI_CBID_NVTX_FORCE_INT = 2147483647,
 }
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialOrd, Ord, PartialEq, Eq)]
+pub enum CUpti_ProfilerRange {
+    CUPTI_Range_INVALID = 0,
+    CUPTI_AutoRange = 1,
+    CUPTI_UserRange = 2,
+    CUPTI_Range_COUNT = 3,
+}
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialOrd, Ord, PartialEq, Eq)]
+pub enum CUpti_ProfilerReplayMode {
+    CUPTI_Replay_INVALID = 0,
+    CUPTI_ApplicationReplay = 1,
+    CUPTI_KernelReplay = 2,
+    CUPTI_UserReplay = 3,
+    CUPTI_Replay_COUNT = 4,
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone, Hash, PartialOrd, Ord, PartialEq, Eq)]
+pub struct CUpti_Profiler_Initialize_Params {
+    pub structSize: usize,
+    pub pPriv: *mut ::std::os::raw::c_void,
+}
+#[test]
+fn bindgen_test_layout_CUpti_Profiler_Initialize_Params() {
+    const UNINIT: ::std::mem::MaybeUninit<CUpti_Profiler_Initialize_Params> =
+        ::std::mem::MaybeUninit::uninit();
+    let ptr = UNINIT.as_ptr();
+    assert_eq!(
+        ::std::mem::size_of::<CUpti_Profiler_Initialize_Params>(),
+        16usize,
+        concat!("Size of: ", stringify!(CUpti_Profiler_Initialize_Params))
+    );
+    assert_eq!(
+        ::std::mem::align_of::<CUpti_Profiler_Initialize_Params>(),
+        8usize,
+        concat!(
+            "Alignment of ",
+            stringify!(CUpti_Profiler_Initialize_Params)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).structSize) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_Initialize_Params),
+            "::",
+            stringify!(structSize)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pPriv) as usize - ptr as usize },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_Initialize_Params),
+            "::",
+            stringify!(pPriv)
+        )
+    );
+}
+impl Default for CUpti_Profiler_Initialize_Params {
+    fn default() -> Self {
+        let mut s = ::std::mem::MaybeUninit::<Self>::uninit();
+        unsafe {
+            ::std::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
+            s.assume_init()
+        }
+    }
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone, Hash, PartialOrd, Ord, PartialEq, Eq)]
+pub struct CUpti_Profiler_DeInitialize_Params {
+    pub structSize: usize,
+    pub pPriv: *mut ::std::os::raw::c_void,
+}
+#[test]
+fn bindgen_test_layout_CUpti_Profiler_DeInitialize_Params() {
+    const UNINIT: ::std::mem::MaybeUninit<CUpti_Profiler_DeInitialize_Params> =
+        ::std::mem::MaybeUninit::uninit();
+    let ptr = UNINIT.as_ptr();
+    assert_eq!(
+        ::std::mem::size_of::<CUpti_Profiler_DeInitialize_Params>(),
+        16usize,
+        concat!("Size of: ", stringify!(CUpti_Profiler_DeInitialize_Params))
+    );
+    assert_eq!(
+        ::std::mem::align_of::<CUpti_Profiler_DeInitialize_Params>(),
+        8usize,
+        concat!(
+            "Alignment of ",
+            stringify!(CUpti_Profiler_DeInitialize_Params)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).structSize) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_DeInitialize_Params),
+            "::",
+            stringify!(structSize)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pPriv) as usize - ptr as usize },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_DeInitialize_Params),
+            "::",
+            stringify!(pPriv)
+        )
+    );
+}
+impl Default for CUpti_Profiler_DeInitialize_Params {
+    fn default() -> Self {
+        let mut s = ::std::mem::MaybeUninit::<Self>::uninit();
+        unsafe {
+            ::std::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
+            s.assume_init()
+        }
+    }
+}
+extern "C" {
+    pub fn cuptiProfilerInitialize(pParams: *mut CUpti_Profiler_Initialize_Params) -> CUptiResult;
+}
+extern "C" {
+    pub fn cuptiProfilerDeInitialize(
+        pParams: *mut CUpti_Profiler_DeInitialize_Params,
+    ) -> CUptiResult;
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone, Hash, PartialOrd, Ord, PartialEq, Eq)]
+pub struct CUpti_Profiler_CounterDataImageOptions {
+    pub structSize: usize,
+    pub pPriv: *mut ::std::os::raw::c_void,
+    pub pCounterDataPrefix: *const u8,
+    pub counterDataPrefixSize: usize,
+    pub maxNumRanges: u32,
+    pub maxNumRangeTreeNodes: u32,
+    pub maxRangeNameLength: u32,
+}
+#[test]
+fn bindgen_test_layout_CUpti_Profiler_CounterDataImageOptions() {
+    const UNINIT: ::std::mem::MaybeUninit<CUpti_Profiler_CounterDataImageOptions> =
+        ::std::mem::MaybeUninit::uninit();
+    let ptr = UNINIT.as_ptr();
+    assert_eq!(
+        ::std::mem::size_of::<CUpti_Profiler_CounterDataImageOptions>(),
+        48usize,
+        concat!(
+            "Size of: ",
+            stringify!(CUpti_Profiler_CounterDataImageOptions)
+        )
+    );
+    assert_eq!(
+        ::std::mem::align_of::<CUpti_Profiler_CounterDataImageOptions>(),
+        8usize,
+        concat!(
+            "Alignment of ",
+            stringify!(CUpti_Profiler_CounterDataImageOptions)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).structSize) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_CounterDataImageOptions),
+            "::",
+            stringify!(structSize)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pPriv) as usize - ptr as usize },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_CounterDataImageOptions),
+            "::",
+            stringify!(pPriv)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pCounterDataPrefix) as usize - ptr as usize },
+        16usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_CounterDataImageOptions),
+            "::",
+            stringify!(pCounterDataPrefix)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).counterDataPrefixSize) as usize - ptr as usize },
+        24usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_CounterDataImageOptions),
+            "::",
+            stringify!(counterDataPrefixSize)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).maxNumRanges) as usize - ptr as usize },
+        32usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_CounterDataImageOptions),
+            "::",
+            stringify!(maxNumRanges)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).maxNumRangeTreeNodes) as usize - ptr as usize },
+        36usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_CounterDataImageOptions),
+            "::",
+            stringify!(maxNumRangeTreeNodes)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).maxRangeNameLength) as usize - ptr as usize },
+        40usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_CounterDataImageOptions),
+            "::",
+            stringify!(maxRangeNameLength)
+        )
+    );
+}
+impl Default for CUpti_Profiler_CounterDataImageOptions {
+    fn default() -> Self {
+        let mut s = ::std::mem::MaybeUninit::<Self>::uninit();
+        unsafe {
+            ::std::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
+            s.assume_init()
+        }
+    }
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone, Hash, PartialOrd, Ord, PartialEq, Eq)]
+pub struct CUpti_Profiler_CounterDataImage_CalculateSize_Params {
+    pub structSize: usize,
+    pub pPriv: *mut ::std::os::raw::c_void,
+    pub sizeofCounterDataImageOptions: usize,
+    pub pOptions: *const CUpti_Profiler_CounterDataImageOptions,
+    pub counterDataImageSize: usize,
+}
+#[test]
+fn bindgen_test_layout_CUpti_Profiler_CounterDataImage_CalculateSize_Params() {
+    const UNINIT: ::std::mem::MaybeUninit<CUpti_Profiler_CounterDataImage_CalculateSize_Params> =
+        ::std::mem::MaybeUninit::uninit();
+    let ptr = UNINIT.as_ptr();
+    assert_eq!(
+        ::std::mem::size_of::<CUpti_Profiler_CounterDataImage_CalculateSize_Params>(),
+        40usize,
+        concat!(
+            "Size of: ",
+            stringify!(CUpti_Profiler_CounterDataImage_CalculateSize_Params)
+        )
+    );
+    assert_eq!(
+        ::std::mem::align_of::<CUpti_Profiler_CounterDataImage_CalculateSize_Params>(),
+        8usize,
+        concat!(
+            "Alignment of ",
+            stringify!(CUpti_Profiler_CounterDataImage_CalculateSize_Params)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).structSize) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_CounterDataImage_CalculateSize_Params),
+            "::",
+            stringify!(structSize)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pPriv) as usize - ptr as usize },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_CounterDataImage_CalculateSize_Params),
+            "::",
+            stringify!(pPriv)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            ::std::ptr::addr_of!((*ptr).sizeofCounterDataImageOptions) as usize - ptr as usize
+        },
+        16usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_CounterDataImage_CalculateSize_Params),
+            "::",
+            stringify!(sizeofCounterDataImageOptions)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pOptions) as usize - ptr as usize },
+        24usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_CounterDataImage_CalculateSize_Params),
+            "::",
+            stringify!(pOptions)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).counterDataImageSize) as usize - ptr as usize },
+        32usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_CounterDataImage_CalculateSize_Params),
+            "::",
+            stringify!(counterDataImageSize)
+        )
+    );
+}
+impl Default for CUpti_Profiler_CounterDataImage_CalculateSize_Params {
+    fn default() -> Self {
+        let mut s = ::std::mem::MaybeUninit::<Self>::uninit();
+        unsafe {
+            ::std::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
+            s.assume_init()
+        }
+    }
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone, Hash, PartialOrd, Ord, PartialEq, Eq)]
+pub struct CUpti_Profiler_CounterDataImage_Initialize_Params {
+    pub structSize: usize,
+    pub pPriv: *mut ::std::os::raw::c_void,
+    pub sizeofCounterDataImageOptions: usize,
+    pub pOptions: *const CUpti_Profiler_CounterDataImageOptions,
+    pub counterDataImageSize: usize,
+    pub pCounterDataImage: *mut u8,
+}
+#[test]
+fn bindgen_test_layout_CUpti_Profiler_CounterDataImage_Initialize_Params() {
+    const UNINIT: ::std::mem::MaybeUninit<CUpti_Profiler_CounterDataImage_Initialize_Params> =
+        ::std::mem::MaybeUninit::uninit();
+    let ptr = UNINIT.as_ptr();
+    assert_eq!(
+        ::std::mem::size_of::<CUpti_Profiler_CounterDataImage_Initialize_Params>(),
+        48usize,
+        concat!(
+            "Size of: ",
+            stringify!(CUpti_Profiler_CounterDataImage_Initialize_Params)
+        )
+    );
+    assert_eq!(
+        ::std::mem::align_of::<CUpti_Profiler_CounterDataImage_Initialize_Params>(),
+        8usize,
+        concat!(
+            "Alignment of ",
+            stringify!(CUpti_Profiler_CounterDataImage_Initialize_Params)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).structSize) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_CounterDataImage_Initialize_Params),
+            "::",
+            stringify!(structSize)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pPriv) as usize - ptr as usize },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_CounterDataImage_Initialize_Params),
+            "::",
+            stringify!(pPriv)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            ::std::ptr::addr_of!((*ptr).sizeofCounterDataImageOptions) as usize - ptr as usize
+        },
+        16usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_CounterDataImage_Initialize_Params),
+            "::",
+            stringify!(sizeofCounterDataImageOptions)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pOptions) as usize - ptr as usize },
+        24usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_CounterDataImage_Initialize_Params),
+            "::",
+            stringify!(pOptions)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).counterDataImageSize) as usize - ptr as usize },
+        32usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_CounterDataImage_Initialize_Params),
+            "::",
+            stringify!(counterDataImageSize)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pCounterDataImage) as usize - ptr as usize },
+        40usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_CounterDataImage_Initialize_Params),
+            "::",
+            stringify!(pCounterDataImage)
+        )
+    );
+}
+impl Default for CUpti_Profiler_CounterDataImage_Initialize_Params {
+    fn default() -> Self {
+        let mut s = ::std::mem::MaybeUninit::<Self>::uninit();
+        unsafe {
+            ::std::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
+            s.assume_init()
+        }
+    }
+}
+extern "C" {
+    pub fn cuptiProfilerCounterDataImageCalculateSize(
+        pParams: *mut CUpti_Profiler_CounterDataImage_CalculateSize_Params,
+    ) -> CUptiResult;
+}
+extern "C" {
+    pub fn cuptiProfilerCounterDataImageInitialize(
+        pParams: *mut CUpti_Profiler_CounterDataImage_Initialize_Params,
+    ) -> CUptiResult;
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone, Hash, PartialOrd, Ord, PartialEq, Eq)]
+pub struct CUpti_Profiler_CounterDataImage_CalculateScratchBufferSize_Params {
+    pub structSize: usize,
+    pub pPriv: *mut ::std::os::raw::c_void,
+    pub counterDataImageSize: usize,
+    pub pCounterDataImage: *mut u8,
+    pub counterDataScratchBufferSize: usize,
+}
+#[test]
+fn bindgen_test_layout_CUpti_Profiler_CounterDataImage_CalculateScratchBufferSize_Params() {
+    const UNINIT: ::std::mem::MaybeUninit<
+        CUpti_Profiler_CounterDataImage_CalculateScratchBufferSize_Params,
+    > = ::std::mem::MaybeUninit::uninit();
+    let ptr = UNINIT.as_ptr();
+    assert_eq!(
+        ::std::mem::size_of::<CUpti_Profiler_CounterDataImage_CalculateScratchBufferSize_Params>(),
+        40usize,
+        concat!(
+            "Size of: ",
+            stringify!(CUpti_Profiler_CounterDataImage_CalculateScratchBufferSize_Params)
+        )
+    );
+    assert_eq!(
+        ::std::mem::align_of::<CUpti_Profiler_CounterDataImage_CalculateScratchBufferSize_Params>(),
+        8usize,
+        concat!(
+            "Alignment of ",
+            stringify!(CUpti_Profiler_CounterDataImage_CalculateScratchBufferSize_Params)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).structSize) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_CounterDataImage_CalculateScratchBufferSize_Params),
+            "::",
+            stringify!(structSize)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pPriv) as usize - ptr as usize },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_CounterDataImage_CalculateScratchBufferSize_Params),
+            "::",
+            stringify!(pPriv)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).counterDataImageSize) as usize - ptr as usize },
+        16usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_CounterDataImage_CalculateScratchBufferSize_Params),
+            "::",
+            stringify!(counterDataImageSize)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pCounterDataImage) as usize - ptr as usize },
+        24usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_CounterDataImage_CalculateScratchBufferSize_Params),
+            "::",
+            stringify!(pCounterDataImage)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            ::std::ptr::addr_of!((*ptr).counterDataScratchBufferSize) as usize - ptr as usize
+        },
+        32usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_CounterDataImage_CalculateScratchBufferSize_Params),
+            "::",
+            stringify!(counterDataScratchBufferSize)
+        )
+    );
+}
+impl Default for CUpti_Profiler_CounterDataImage_CalculateScratchBufferSize_Params {
+    fn default() -> Self {
+        let mut s = ::std::mem::MaybeUninit::<Self>::uninit();
+        unsafe {
+            ::std::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
+            s.assume_init()
+        }
+    }
+}
+#[repr(C)]
+#[derive(Debug, Copy, Clone, Hash, PartialOrd, Ord, PartialEq, Eq)]
+pub struct CUpti_Profiler_CounterDataImage_InitializeScratchBuffer_Params {
+    pub structSize: usize,
+    pub pPriv: *mut ::std::os::raw::c_void,
+    pub counterDataImageSize: usize,
+    pub pCounterDataImage: *mut u8,
+    pub counterDataScratchBufferSize: usize,
+    pub pCounterDataScratchBuffer: *mut u8,
+}
+#[test]
+fn bindgen_test_layout_CUpti_Profiler_CounterDataImage_InitializeScratchBuffer_Params() {
+    const UNINIT: ::std::mem::MaybeUninit<
+        CUpti_Profiler_CounterDataImage_InitializeScratchBuffer_Params,
+    > = ::std::mem::MaybeUninit::uninit();
+    let ptr = UNINIT.as_ptr();
+    assert_eq!(
+        ::std::mem::size_of::<CUpti_Profiler_CounterDataImage_InitializeScratchBuffer_Params>(),
+        48usize,
+        concat!(
+            "Size of: ",
+            stringify!(CUpti_Profiler_CounterDataImage_InitializeScratchBuffer_Params)
+        )
+    );
+    assert_eq!(
+        ::std::mem::align_of::<CUpti_Profiler_CounterDataImage_InitializeScratchBuffer_Params>(),
+        8usize,
+        concat!(
+            "Alignment of ",
+            stringify!(CUpti_Profiler_CounterDataImage_InitializeScratchBuffer_Params)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).structSize) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_CounterDataImage_InitializeScratchBuffer_Params),
+            "::",
+            stringify!(structSize)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pPriv) as usize - ptr as usize },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_CounterDataImage_InitializeScratchBuffer_Params),
+            "::",
+            stringify!(pPriv)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).counterDataImageSize) as usize - ptr as usize },
+        16usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_CounterDataImage_InitializeScratchBuffer_Params),
+            "::",
+            stringify!(counterDataImageSize)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pCounterDataImage) as usize - ptr as usize },
+        24usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_CounterDataImage_InitializeScratchBuffer_Params),
+            "::",
+            stringify!(pCounterDataImage)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            ::std::ptr::addr_of!((*ptr).counterDataScratchBufferSize) as usize - ptr as usize
+        },
+        32usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_CounterDataImage_InitializeScratchBuffer_Params),
+            "::",
+            stringify!(counterDataScratchBufferSize)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pCounterDataScratchBuffer) as usize - ptr as usize },
+        40usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_CounterDataImage_InitializeScratchBuffer_Params),
+            "::",
+            stringify!(pCounterDataScratchBuffer)
+        )
+    );
+}
+impl Default for CUpti_Profiler_CounterDataImage_InitializeScratchBuffer_Params {
+    fn default() -> Self {
+        let mut s = ::std::mem::MaybeUninit::<Self>::uninit();
+        unsafe {
+            ::std::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
+            s.assume_init()
+        }
+    }
+}
+extern "C" {
+    pub fn cuptiProfilerCounterDataImageCalculateScratchBufferSize(
+        pParams: *mut CUpti_Profiler_CounterDataImage_CalculateScratchBufferSize_Params,
+    ) -> CUptiResult;
+}
+extern "C" {
+    pub fn cuptiProfilerCounterDataImageInitializeScratchBuffer(
+        pParams: *mut CUpti_Profiler_CounterDataImage_InitializeScratchBuffer_Params,
+    ) -> CUptiResult;
+}
+#[repr(C)]
+pub struct CUpti_Profiler_BeginSession_Params {
+    pub structSize: usize,
+    pub pPriv: *mut ::std::os::raw::c_void,
+    pub ctx: CUcontext,
+    pub counterDataImageSize: usize,
+    pub pCounterDataImage: *mut u8,
+    pub counterDataScratchBufferSize: usize,
+    pub pCounterDataScratchBuffer: *mut u8,
+    pub bDumpCounterDataInFile: u8,
+    pub pCounterDataFilePath: *const ::std::os::raw::c_char,
+    pub range: CUpti_ProfilerRange,
+    pub replayMode: CUpti_ProfilerReplayMode,
+    pub maxRangesPerPass: usize,
+    pub maxLaunchesPerPass: usize,
+}
+#[test]
+fn bindgen_test_layout_CUpti_Profiler_BeginSession_Params() {
+    const UNINIT: ::std::mem::MaybeUninit<CUpti_Profiler_BeginSession_Params> =
+        ::std::mem::MaybeUninit::uninit();
+    let ptr = UNINIT.as_ptr();
+    assert_eq!(
+        ::std::mem::size_of::<CUpti_Profiler_BeginSession_Params>(),
+        96usize,
+        concat!("Size of: ", stringify!(CUpti_Profiler_BeginSession_Params))
+    );
+    assert_eq!(
+        ::std::mem::align_of::<CUpti_Profiler_BeginSession_Params>(),
+        8usize,
+        concat!(
+            "Alignment of ",
+            stringify!(CUpti_Profiler_BeginSession_Params)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).structSize) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_BeginSession_Params),
+            "::",
+            stringify!(structSize)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pPriv) as usize - ptr as usize },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_BeginSession_Params),
+            "::",
+            stringify!(pPriv)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).ctx) as usize - ptr as usize },
+        16usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_BeginSession_Params),
+            "::",
+            stringify!(ctx)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).counterDataImageSize) as usize - ptr as usize },
+        24usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_BeginSession_Params),
+            "::",
+            stringify!(counterDataImageSize)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pCounterDataImage) as usize - ptr as usize },
+        32usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_BeginSession_Params),
+            "::",
+            stringify!(pCounterDataImage)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            ::std::ptr::addr_of!((*ptr).counterDataScratchBufferSize) as usize - ptr as usize
+        },
+        40usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_BeginSession_Params),
+            "::",
+            stringify!(counterDataScratchBufferSize)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pCounterDataScratchBuffer) as usize - ptr as usize },
+        48usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_BeginSession_Params),
+            "::",
+            stringify!(pCounterDataScratchBuffer)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).bDumpCounterDataInFile) as usize - ptr as usize },
+        56usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_BeginSession_Params),
+            "::",
+            stringify!(bDumpCounterDataInFile)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pCounterDataFilePath) as usize - ptr as usize },
+        64usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_BeginSession_Params),
+            "::",
+            stringify!(pCounterDataFilePath)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).range) as usize - ptr as usize },
+        72usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_BeginSession_Params),
+            "::",
+            stringify!(range)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).replayMode) as usize - ptr as usize },
+        76usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_BeginSession_Params),
+            "::",
+            stringify!(replayMode)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).maxRangesPerPass) as usize - ptr as usize },
+        80usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_BeginSession_Params),
+            "::",
+            stringify!(maxRangesPerPass)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).maxLaunchesPerPass) as usize - ptr as usize },
+        88usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_BeginSession_Params),
+            "::",
+            stringify!(maxLaunchesPerPass)
+        )
+    );
+}
+impl Default for CUpti_Profiler_BeginSession_Params {
+    fn default() -> Self {
+        let mut s = ::std::mem::MaybeUninit::<Self>::uninit();
+        unsafe {
+            ::std::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
+            s.assume_init()
+        }
+    }
+}
+#[repr(C)]
+pub struct CUpti_Profiler_EndSession_Params {
+    pub structSize: usize,
+    pub pPriv: *mut ::std::os::raw::c_void,
+    pub ctx: CUcontext,
+}
+#[test]
+fn bindgen_test_layout_CUpti_Profiler_EndSession_Params() {
+    const UNINIT: ::std::mem::MaybeUninit<CUpti_Profiler_EndSession_Params> =
+        ::std::mem::MaybeUninit::uninit();
+    let ptr = UNINIT.as_ptr();
+    assert_eq!(
+        ::std::mem::size_of::<CUpti_Profiler_EndSession_Params>(),
+        24usize,
+        concat!("Size of: ", stringify!(CUpti_Profiler_EndSession_Params))
+    );
+    assert_eq!(
+        ::std::mem::align_of::<CUpti_Profiler_EndSession_Params>(),
+        8usize,
+        concat!(
+            "Alignment of ",
+            stringify!(CUpti_Profiler_EndSession_Params)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).structSize) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_EndSession_Params),
+            "::",
+            stringify!(structSize)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pPriv) as usize - ptr as usize },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_EndSession_Params),
+            "::",
+            stringify!(pPriv)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).ctx) as usize - ptr as usize },
+        16usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_EndSession_Params),
+            "::",
+            stringify!(ctx)
+        )
+    );
+}
+impl Default for CUpti_Profiler_EndSession_Params {
+    fn default() -> Self {
+        let mut s = ::std::mem::MaybeUninit::<Self>::uninit();
+        unsafe {
+            ::std::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
+            s.assume_init()
+        }
+    }
+}
+extern "C" {
+    pub fn cuptiProfilerBeginSession(
+        pParams: *mut CUpti_Profiler_BeginSession_Params,
+    ) -> CUptiResult;
+}
+extern "C" {
+    pub fn cuptiProfilerEndSession(pParams: *mut CUpti_Profiler_EndSession_Params) -> CUptiResult;
+}
+#[repr(C)]
+pub struct CUpti_Profiler_SetConfig_Params {
+    pub structSize: usize,
+    pub pPriv: *mut ::std::os::raw::c_void,
+    pub ctx: CUcontext,
+    pub pConfig: *const u8,
+    pub configSize: usize,
+    pub minNestingLevel: u16,
+    pub numNestingLevels: u16,
+    pub passIndex: usize,
+    pub targetNestingLevel: u16,
+}
+#[test]
+fn bindgen_test_layout_CUpti_Profiler_SetConfig_Params() {
+    const UNINIT: ::std::mem::MaybeUninit<CUpti_Profiler_SetConfig_Params> =
+        ::std::mem::MaybeUninit::uninit();
+    let ptr = UNINIT.as_ptr();
+    assert_eq!(
+        ::std::mem::size_of::<CUpti_Profiler_SetConfig_Params>(),
+        64usize,
+        concat!("Size of: ", stringify!(CUpti_Profiler_SetConfig_Params))
+    );
+    assert_eq!(
+        ::std::mem::align_of::<CUpti_Profiler_SetConfig_Params>(),
+        8usize,
+        concat!("Alignment of ", stringify!(CUpti_Profiler_SetConfig_Params))
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).structSize) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_SetConfig_Params),
+            "::",
+            stringify!(structSize)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pPriv) as usize - ptr as usize },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_SetConfig_Params),
+            "::",
+            stringify!(pPriv)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).ctx) as usize - ptr as usize },
+        16usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_SetConfig_Params),
+            "::",
+            stringify!(ctx)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pConfig) as usize - ptr as usize },
+        24usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_SetConfig_Params),
+            "::",
+            stringify!(pConfig)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).configSize) as usize - ptr as usize },
+        32usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_SetConfig_Params),
+            "::",
+            stringify!(configSize)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).minNestingLevel) as usize - ptr as usize },
+        40usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_SetConfig_Params),
+            "::",
+            stringify!(minNestingLevel)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).numNestingLevels) as usize - ptr as usize },
+        42usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_SetConfig_Params),
+            "::",
+            stringify!(numNestingLevels)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).passIndex) as usize - ptr as usize },
+        48usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_SetConfig_Params),
+            "::",
+            stringify!(passIndex)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).targetNestingLevel) as usize - ptr as usize },
+        56usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_SetConfig_Params),
+            "::",
+            stringify!(targetNestingLevel)
+        )
+    );
+}
+impl Default for CUpti_Profiler_SetConfig_Params {
+    fn default() -> Self {
+        let mut s = ::std::mem::MaybeUninit::<Self>::uninit();
+        unsafe {
+            ::std::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
+            s.assume_init()
+        }
+    }
+}
+#[repr(C)]
+pub struct CUpti_Profiler_UnsetConfig_Params {
+    pub structSize: usize,
+    pub pPriv: *mut ::std::os::raw::c_void,
+    pub ctx: CUcontext,
+}
+#[test]
+fn bindgen_test_layout_CUpti_Profiler_UnsetConfig_Params() {
+    const UNINIT: ::std::mem::MaybeUninit<CUpti_Profiler_UnsetConfig_Params> =
+        ::std::mem::MaybeUninit::uninit();
+    let ptr = UNINIT.as_ptr();
+    assert_eq!(
+        ::std::mem::size_of::<CUpti_Profiler_UnsetConfig_Params>(),
+        24usize,
+        concat!("Size of: ", stringify!(CUpti_Profiler_UnsetConfig_Params))
+    );
+    assert_eq!(
+        ::std::mem::align_of::<CUpti_Profiler_UnsetConfig_Params>(),
+        8usize,
+        concat!(
+            "Alignment of ",
+            stringify!(CUpti_Profiler_UnsetConfig_Params)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).structSize) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_UnsetConfig_Params),
+            "::",
+            stringify!(structSize)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pPriv) as usize - ptr as usize },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_UnsetConfig_Params),
+            "::",
+            stringify!(pPriv)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).ctx) as usize - ptr as usize },
+        16usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_UnsetConfig_Params),
+            "::",
+            stringify!(ctx)
+        )
+    );
+}
+impl Default for CUpti_Profiler_UnsetConfig_Params {
+    fn default() -> Self {
+        let mut s = ::std::mem::MaybeUninit::<Self>::uninit();
+        unsafe {
+            ::std::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
+            s.assume_init()
+        }
+    }
+}
+extern "C" {
+    pub fn cuptiProfilerSetConfig(pParams: *mut CUpti_Profiler_SetConfig_Params) -> CUptiResult;
+}
+extern "C" {
+    pub fn cuptiProfilerUnsetConfig(pParams: *mut CUpti_Profiler_UnsetConfig_Params)
+        -> CUptiResult;
+}
+#[repr(C)]
+pub struct CUpti_Profiler_BeginPass_Params {
+    pub structSize: usize,
+    pub pPriv: *mut ::std::os::raw::c_void,
+    pub ctx: CUcontext,
+}
+#[test]
+fn bindgen_test_layout_CUpti_Profiler_BeginPass_Params() {
+    const UNINIT: ::std::mem::MaybeUninit<CUpti_Profiler_BeginPass_Params> =
+        ::std::mem::MaybeUninit::uninit();
+    let ptr = UNINIT.as_ptr();
+    assert_eq!(
+        ::std::mem::size_of::<CUpti_Profiler_BeginPass_Params>(),
+        24usize,
+        concat!("Size of: ", stringify!(CUpti_Profiler_BeginPass_Params))
+    );
+    assert_eq!(
+        ::std::mem::align_of::<CUpti_Profiler_BeginPass_Params>(),
+        8usize,
+        concat!("Alignment of ", stringify!(CUpti_Profiler_BeginPass_Params))
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).structSize) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_BeginPass_Params),
+            "::",
+            stringify!(structSize)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pPriv) as usize - ptr as usize },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_BeginPass_Params),
+            "::",
+            stringify!(pPriv)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).ctx) as usize - ptr as usize },
+        16usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_BeginPass_Params),
+            "::",
+            stringify!(ctx)
+        )
+    );
+}
+impl Default for CUpti_Profiler_BeginPass_Params {
+    fn default() -> Self {
+        let mut s = ::std::mem::MaybeUninit::<Self>::uninit();
+        unsafe {
+            ::std::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
+            s.assume_init()
+        }
+    }
+}
+#[repr(C)]
+pub struct CUpti_Profiler_EndPass_Params {
+    pub structSize: usize,
+    pub pPriv: *mut ::std::os::raw::c_void,
+    pub ctx: CUcontext,
+    pub targetNestingLevel: u16,
+    pub passIndex: usize,
+    pub allPassesSubmitted: u8,
+}
+#[test]
+fn bindgen_test_layout_CUpti_Profiler_EndPass_Params() {
+    const UNINIT: ::std::mem::MaybeUninit<CUpti_Profiler_EndPass_Params> =
+        ::std::mem::MaybeUninit::uninit();
+    let ptr = UNINIT.as_ptr();
+    assert_eq!(
+        ::std::mem::size_of::<CUpti_Profiler_EndPass_Params>(),
+        48usize,
+        concat!("Size of: ", stringify!(CUpti_Profiler_EndPass_Params))
+    );
+    assert_eq!(
+        ::std::mem::align_of::<CUpti_Profiler_EndPass_Params>(),
+        8usize,
+        concat!("Alignment of ", stringify!(CUpti_Profiler_EndPass_Params))
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).structSize) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_EndPass_Params),
+            "::",
+            stringify!(structSize)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pPriv) as usize - ptr as usize },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_EndPass_Params),
+            "::",
+            stringify!(pPriv)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).ctx) as usize - ptr as usize },
+        16usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_EndPass_Params),
+            "::",
+            stringify!(ctx)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).targetNestingLevel) as usize - ptr as usize },
+        24usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_EndPass_Params),
+            "::",
+            stringify!(targetNestingLevel)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).passIndex) as usize - ptr as usize },
+        32usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_EndPass_Params),
+            "::",
+            stringify!(passIndex)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).allPassesSubmitted) as usize - ptr as usize },
+        40usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_EndPass_Params),
+            "::",
+            stringify!(allPassesSubmitted)
+        )
+    );
+}
+impl Default for CUpti_Profiler_EndPass_Params {
+    fn default() -> Self {
+        let mut s = ::std::mem::MaybeUninit::<Self>::uninit();
+        unsafe {
+            ::std::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
+            s.assume_init()
+        }
+    }
+}
+extern "C" {
+    pub fn cuptiProfilerBeginPass(pParams: *mut CUpti_Profiler_BeginPass_Params) -> CUptiResult;
+}
+extern "C" {
+    pub fn cuptiProfilerEndPass(pParams: *mut CUpti_Profiler_EndPass_Params) -> CUptiResult;
+}
+#[repr(C)]
+pub struct CUpti_Profiler_EnableProfiling_Params {
+    pub structSize: usize,
+    pub pPriv: *mut ::std::os::raw::c_void,
+    pub ctx: CUcontext,
+}
+#[test]
+fn bindgen_test_layout_CUpti_Profiler_EnableProfiling_Params() {
+    const UNINIT: ::std::mem::MaybeUninit<CUpti_Profiler_EnableProfiling_Params> =
+        ::std::mem::MaybeUninit::uninit();
+    let ptr = UNINIT.as_ptr();
+    assert_eq!(
+        ::std::mem::size_of::<CUpti_Profiler_EnableProfiling_Params>(),
+        24usize,
+        concat!(
+            "Size of: ",
+            stringify!(CUpti_Profiler_EnableProfiling_Params)
+        )
+    );
+    assert_eq!(
+        ::std::mem::align_of::<CUpti_Profiler_EnableProfiling_Params>(),
+        8usize,
+        concat!(
+            "Alignment of ",
+            stringify!(CUpti_Profiler_EnableProfiling_Params)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).structSize) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_EnableProfiling_Params),
+            "::",
+            stringify!(structSize)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pPriv) as usize - ptr as usize },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_EnableProfiling_Params),
+            "::",
+            stringify!(pPriv)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).ctx) as usize - ptr as usize },
+        16usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_EnableProfiling_Params),
+            "::",
+            stringify!(ctx)
+        )
+    );
+}
+impl Default for CUpti_Profiler_EnableProfiling_Params {
+    fn default() -> Self {
+        let mut s = ::std::mem::MaybeUninit::<Self>::uninit();
+        unsafe {
+            ::std::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
+            s.assume_init()
+        }
+    }
+}
+#[repr(C)]
+pub struct CUpti_Profiler_DisableProfiling_Params {
+    pub structSize: usize,
+    pub pPriv: *mut ::std::os::raw::c_void,
+    pub ctx: CUcontext,
+}
+#[test]
+fn bindgen_test_layout_CUpti_Profiler_DisableProfiling_Params() {
+    const UNINIT: ::std::mem::MaybeUninit<CUpti_Profiler_DisableProfiling_Params> =
+        ::std::mem::MaybeUninit::uninit();
+    let ptr = UNINIT.as_ptr();
+    assert_eq!(
+        ::std::mem::size_of::<CUpti_Profiler_DisableProfiling_Params>(),
+        24usize,
+        concat!(
+            "Size of: ",
+            stringify!(CUpti_Profiler_DisableProfiling_Params)
+        )
+    );
+    assert_eq!(
+        ::std::mem::align_of::<CUpti_Profiler_DisableProfiling_Params>(),
+        8usize,
+        concat!(
+            "Alignment of ",
+            stringify!(CUpti_Profiler_DisableProfiling_Params)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).structSize) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_DisableProfiling_Params),
+            "::",
+            stringify!(structSize)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pPriv) as usize - ptr as usize },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_DisableProfiling_Params),
+            "::",
+            stringify!(pPriv)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).ctx) as usize - ptr as usize },
+        16usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_DisableProfiling_Params),
+            "::",
+            stringify!(ctx)
+        )
+    );
+}
+impl Default for CUpti_Profiler_DisableProfiling_Params {
+    fn default() -> Self {
+        let mut s = ::std::mem::MaybeUninit::<Self>::uninit();
+        unsafe {
+            ::std::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
+            s.assume_init()
+        }
+    }
+}
+extern "C" {
+    pub fn cuptiProfilerEnableProfiling(
+        pParams: *mut CUpti_Profiler_EnableProfiling_Params,
+    ) -> CUptiResult;
+}
+extern "C" {
+    pub fn cuptiProfilerDisableProfiling(
+        pParams: *mut CUpti_Profiler_DisableProfiling_Params,
+    ) -> CUptiResult;
+}
+#[repr(C)]
+pub struct CUpti_Profiler_IsPassCollected_Params {
+    pub structSize: usize,
+    pub pPriv: *mut ::std::os::raw::c_void,
+    pub ctx: CUcontext,
+    pub numRangesDropped: usize,
+    pub numTraceBytesDropped: usize,
+    pub onePassCollected: u8,
+    pub allPassesCollected: u8,
+}
+#[test]
+fn bindgen_test_layout_CUpti_Profiler_IsPassCollected_Params() {
+    const UNINIT: ::std::mem::MaybeUninit<CUpti_Profiler_IsPassCollected_Params> =
+        ::std::mem::MaybeUninit::uninit();
+    let ptr = UNINIT.as_ptr();
+    assert_eq!(
+        ::std::mem::size_of::<CUpti_Profiler_IsPassCollected_Params>(),
+        48usize,
+        concat!(
+            "Size of: ",
+            stringify!(CUpti_Profiler_IsPassCollected_Params)
+        )
+    );
+    assert_eq!(
+        ::std::mem::align_of::<CUpti_Profiler_IsPassCollected_Params>(),
+        8usize,
+        concat!(
+            "Alignment of ",
+            stringify!(CUpti_Profiler_IsPassCollected_Params)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).structSize) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_IsPassCollected_Params),
+            "::",
+            stringify!(structSize)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pPriv) as usize - ptr as usize },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_IsPassCollected_Params),
+            "::",
+            stringify!(pPriv)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).ctx) as usize - ptr as usize },
+        16usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_IsPassCollected_Params),
+            "::",
+            stringify!(ctx)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).numRangesDropped) as usize - ptr as usize },
+        24usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_IsPassCollected_Params),
+            "::",
+            stringify!(numRangesDropped)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).numTraceBytesDropped) as usize - ptr as usize },
+        32usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_IsPassCollected_Params),
+            "::",
+            stringify!(numTraceBytesDropped)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).onePassCollected) as usize - ptr as usize },
+        40usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_IsPassCollected_Params),
+            "::",
+            stringify!(onePassCollected)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).allPassesCollected) as usize - ptr as usize },
+        41usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_IsPassCollected_Params),
+            "::",
+            stringify!(allPassesCollected)
+        )
+    );
+}
+impl Default for CUpti_Profiler_IsPassCollected_Params {
+    fn default() -> Self {
+        let mut s = ::std::mem::MaybeUninit::<Self>::uninit();
+        unsafe {
+            ::std::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
+            s.assume_init()
+        }
+    }
+}
+extern "C" {
+    pub fn cuptiProfilerIsPassCollected(
+        pParams: *mut CUpti_Profiler_IsPassCollected_Params,
+    ) -> CUptiResult;
+}
+#[repr(C)]
+pub struct CUpti_Profiler_FlushCounterData_Params {
+    pub structSize: usize,
+    pub pPriv: *mut ::std::os::raw::c_void,
+    pub ctx: CUcontext,
+    pub numRangesDropped: usize,
+    pub numTraceBytesDropped: usize,
+}
+#[test]
+fn bindgen_test_layout_CUpti_Profiler_FlushCounterData_Params() {
+    const UNINIT: ::std::mem::MaybeUninit<CUpti_Profiler_FlushCounterData_Params> =
+        ::std::mem::MaybeUninit::uninit();
+    let ptr = UNINIT.as_ptr();
+    assert_eq!(
+        ::std::mem::size_of::<CUpti_Profiler_FlushCounterData_Params>(),
+        40usize,
+        concat!(
+            "Size of: ",
+            stringify!(CUpti_Profiler_FlushCounterData_Params)
+        )
+    );
+    assert_eq!(
+        ::std::mem::align_of::<CUpti_Profiler_FlushCounterData_Params>(),
+        8usize,
+        concat!(
+            "Alignment of ",
+            stringify!(CUpti_Profiler_FlushCounterData_Params)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).structSize) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_FlushCounterData_Params),
+            "::",
+            stringify!(structSize)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pPriv) as usize - ptr as usize },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_FlushCounterData_Params),
+            "::",
+            stringify!(pPriv)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).ctx) as usize - ptr as usize },
+        16usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_FlushCounterData_Params),
+            "::",
+            stringify!(ctx)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).numRangesDropped) as usize - ptr as usize },
+        24usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_FlushCounterData_Params),
+            "::",
+            stringify!(numRangesDropped)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).numTraceBytesDropped) as usize - ptr as usize },
+        32usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_FlushCounterData_Params),
+            "::",
+            stringify!(numTraceBytesDropped)
+        )
+    );
+}
+impl Default for CUpti_Profiler_FlushCounterData_Params {
+    fn default() -> Self {
+        let mut s = ::std::mem::MaybeUninit::<Self>::uninit();
+        unsafe {
+            ::std::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
+            s.assume_init()
+        }
+    }
+}
+extern "C" {
+    pub fn cuptiProfilerFlushCounterData(
+        pParams: *mut CUpti_Profiler_FlushCounterData_Params,
+    ) -> CUptiResult;
+}
+#[repr(C)]
+pub struct CUpti_Profiler_PushRange_Params {
+    pub structSize: usize,
+    pub pPriv: *mut ::std::os::raw::c_void,
+    pub ctx: CUcontext,
+    pub pRangeName: *const ::std::os::raw::c_char,
+    pub rangeNameLength: usize,
+}
+#[test]
+fn bindgen_test_layout_CUpti_Profiler_PushRange_Params() {
+    const UNINIT: ::std::mem::MaybeUninit<CUpti_Profiler_PushRange_Params> =
+        ::std::mem::MaybeUninit::uninit();
+    let ptr = UNINIT.as_ptr();
+    assert_eq!(
+        ::std::mem::size_of::<CUpti_Profiler_PushRange_Params>(),
+        40usize,
+        concat!("Size of: ", stringify!(CUpti_Profiler_PushRange_Params))
+    );
+    assert_eq!(
+        ::std::mem::align_of::<CUpti_Profiler_PushRange_Params>(),
+        8usize,
+        concat!("Alignment of ", stringify!(CUpti_Profiler_PushRange_Params))
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).structSize) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_PushRange_Params),
+            "::",
+            stringify!(structSize)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pPriv) as usize - ptr as usize },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_PushRange_Params),
+            "::",
+            stringify!(pPriv)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).ctx) as usize - ptr as usize },
+        16usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_PushRange_Params),
+            "::",
+            stringify!(ctx)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pRangeName) as usize - ptr as usize },
+        24usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_PushRange_Params),
+            "::",
+            stringify!(pRangeName)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).rangeNameLength) as usize - ptr as usize },
+        32usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_PushRange_Params),
+            "::",
+            stringify!(rangeNameLength)
+        )
+    );
+}
+impl Default for CUpti_Profiler_PushRange_Params {
+    fn default() -> Self {
+        let mut s = ::std::mem::MaybeUninit::<Self>::uninit();
+        unsafe {
+            ::std::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
+            s.assume_init()
+        }
+    }
+}
+#[repr(C)]
+pub struct CUpti_Profiler_PopRange_Params {
+    pub structSize: usize,
+    pub pPriv: *mut ::std::os::raw::c_void,
+    pub ctx: CUcontext,
+}
+#[test]
+fn bindgen_test_layout_CUpti_Profiler_PopRange_Params() {
+    const UNINIT: ::std::mem::MaybeUninit<CUpti_Profiler_PopRange_Params> =
+        ::std::mem::MaybeUninit::uninit();
+    let ptr = UNINIT.as_ptr();
+    assert_eq!(
+        ::std::mem::size_of::<CUpti_Profiler_PopRange_Params>(),
+        24usize,
+        concat!("Size of: ", stringify!(CUpti_Profiler_PopRange_Params))
+    );
+    assert_eq!(
+        ::std::mem::align_of::<CUpti_Profiler_PopRange_Params>(),
+        8usize,
+        concat!("Alignment of ", stringify!(CUpti_Profiler_PopRange_Params))
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).structSize) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_PopRange_Params),
+            "::",
+            stringify!(structSize)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pPriv) as usize - ptr as usize },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_PopRange_Params),
+            "::",
+            stringify!(pPriv)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).ctx) as usize - ptr as usize },
+        16usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_PopRange_Params),
+            "::",
+            stringify!(ctx)
+        )
+    );
+}
+impl Default for CUpti_Profiler_PopRange_Params {
+    fn default() -> Self {
+        let mut s = ::std::mem::MaybeUninit::<Self>::uninit();
+        unsafe {
+            ::std::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
+            s.assume_init()
+        }
+    }
+}
+extern "C" {
+    pub fn cuptiProfilerPushRange(pParams: *mut CUpti_Profiler_PushRange_Params) -> CUptiResult;
+}
+extern "C" {
+    pub fn cuptiProfilerPopRange(pParams: *mut CUpti_Profiler_PopRange_Params) -> CUptiResult;
+}
+#[repr(C)]
+pub struct CUpti_Profiler_GetCounterAvailability_Params {
+    pub structSize: usize,
+    pub pPriv: *mut ::std::os::raw::c_void,
+    pub ctx: CUcontext,
+    pub counterAvailabilityImageSize: usize,
+    pub pCounterAvailabilityImage: *mut u8,
+}
+#[test]
+fn bindgen_test_layout_CUpti_Profiler_GetCounterAvailability_Params() {
+    const UNINIT: ::std::mem::MaybeUninit<CUpti_Profiler_GetCounterAvailability_Params> =
+        ::std::mem::MaybeUninit::uninit();
+    let ptr = UNINIT.as_ptr();
+    assert_eq!(
+        ::std::mem::size_of::<CUpti_Profiler_GetCounterAvailability_Params>(),
+        40usize,
+        concat!(
+            "Size of: ",
+            stringify!(CUpti_Profiler_GetCounterAvailability_Params)
+        )
+    );
+    assert_eq!(
+        ::std::mem::align_of::<CUpti_Profiler_GetCounterAvailability_Params>(),
+        8usize,
+        concat!(
+            "Alignment of ",
+            stringify!(CUpti_Profiler_GetCounterAvailability_Params)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).structSize) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_GetCounterAvailability_Params),
+            "::",
+            stringify!(structSize)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pPriv) as usize - ptr as usize },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_GetCounterAvailability_Params),
+            "::",
+            stringify!(pPriv)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).ctx) as usize - ptr as usize },
+        16usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_GetCounterAvailability_Params),
+            "::",
+            stringify!(ctx)
+        )
+    );
+    assert_eq!(
+        unsafe {
+            ::std::ptr::addr_of!((*ptr).counterAvailabilityImageSize) as usize - ptr as usize
+        },
+        24usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_GetCounterAvailability_Params),
+            "::",
+            stringify!(counterAvailabilityImageSize)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pCounterAvailabilityImage) as usize - ptr as usize },
+        32usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_GetCounterAvailability_Params),
+            "::",
+            stringify!(pCounterAvailabilityImage)
+        )
+    );
+}
+impl Default for CUpti_Profiler_GetCounterAvailability_Params {
+    fn default() -> Self {
+        let mut s = ::std::mem::MaybeUninit::<Self>::uninit();
+        unsafe {
+            ::std::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
+            s.assume_init()
+        }
+    }
+}
+extern "C" {
+    pub fn cuptiProfilerGetCounterAvailability(
+        pParams: *mut CUpti_Profiler_GetCounterAvailability_Params,
+    ) -> CUptiResult;
+}
+#[repr(u32)]
+#[derive(Debug, Copy, Clone, Hash, PartialOrd, Ord, PartialEq, Eq)]
+pub enum CUpti_Profiler_Support_Level {
+    CUPTI_PROFILER_CONFIGURATION_UNKNOWN = 0,
+    CUPTI_PROFILER_CONFIGURATION_UNSUPPORTED = 1,
+    CUPTI_PROFILER_CONFIGURATION_DISABLED = 2,
+    CUPTI_PROFILER_CONFIGURATION_SUPPORTED = 3,
+}
+#[repr(C)]
+pub struct CUpti_Profiler_DeviceSupported_Params {
+    pub structSize: usize,
+    pub pPriv: *mut ::std::os::raw::c_void,
+    pub cuDevice: CUdevice,
+    pub isSupported: CUpti_Profiler_Support_Level,
+    pub architecture: CUpti_Profiler_Support_Level,
+    pub sli: CUpti_Profiler_Support_Level,
+    pub vGpu: CUpti_Profiler_Support_Level,
+    pub confidentialCompute: CUpti_Profiler_Support_Level,
+    pub cmp: CUpti_Profiler_Support_Level,
+}
+#[test]
+fn bindgen_test_layout_CUpti_Profiler_DeviceSupported_Params() {
+    const UNINIT: ::std::mem::MaybeUninit<CUpti_Profiler_DeviceSupported_Params> =
+        ::std::mem::MaybeUninit::uninit();
+    let ptr = UNINIT.as_ptr();
+    assert_eq!(
+        ::std::mem::size_of::<CUpti_Profiler_DeviceSupported_Params>(),
+        48usize,
+        concat!(
+            "Size of: ",
+            stringify!(CUpti_Profiler_DeviceSupported_Params)
+        )
+    );
+    assert_eq!(
+        ::std::mem::align_of::<CUpti_Profiler_DeviceSupported_Params>(),
+        8usize,
+        concat!(
+            "Alignment of ",
+            stringify!(CUpti_Profiler_DeviceSupported_Params)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).structSize) as usize - ptr as usize },
+        0usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_DeviceSupported_Params),
+            "::",
+            stringify!(structSize)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).pPriv) as usize - ptr as usize },
+        8usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_DeviceSupported_Params),
+            "::",
+            stringify!(pPriv)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).cuDevice) as usize - ptr as usize },
+        16usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_DeviceSupported_Params),
+            "::",
+            stringify!(cuDevice)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).isSupported) as usize - ptr as usize },
+        20usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_DeviceSupported_Params),
+            "::",
+            stringify!(isSupported)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).architecture) as usize - ptr as usize },
+        24usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_DeviceSupported_Params),
+            "::",
+            stringify!(architecture)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).sli) as usize - ptr as usize },
+        28usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_DeviceSupported_Params),
+            "::",
+            stringify!(sli)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).vGpu) as usize - ptr as usize },
+        32usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_DeviceSupported_Params),
+            "::",
+            stringify!(vGpu)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).confidentialCompute) as usize - ptr as usize },
+        36usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_DeviceSupported_Params),
+            "::",
+            stringify!(confidentialCompute)
+        )
+    );
+    assert_eq!(
+        unsafe { ::std::ptr::addr_of!((*ptr).cmp) as usize - ptr as usize },
+        40usize,
+        concat!(
+            "Offset of field: ",
+            stringify!(CUpti_Profiler_DeviceSupported_Params),
+            "::",
+            stringify!(cmp)
+        )
+    );
+}
+impl Default for CUpti_Profiler_DeviceSupported_Params {
+    fn default() -> Self {
+        let mut s = ::std::mem::MaybeUninit::<Self>::uninit();
+        unsafe {
+            ::std::ptr::write_bytes(s.as_mut_ptr(), 0, 1);
+            s.assume_init()
+        }
+    }
+}
+extern "C" {
+    pub fn cuptiProfilerDeviceSupported(
+        pParams: *mut CUpti_Profiler_DeviceSupported_Params,
+    ) -> CUptiResult;
+}
