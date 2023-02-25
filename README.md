@@ -1,6 +1,6 @@
 # cupti-sys
 
-Rust binding to CUDA cupti library
+Rust binding to CUpti library.
 
 
 ## Usage
