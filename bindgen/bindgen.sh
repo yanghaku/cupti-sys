@@ -15,6 +15,7 @@ bindgen \
     --allowlist-type="^CUpti.*" \
     --allowlist-var="^CUpti.*" \
     --allowlist-function="^cupti.*" \
+    --allowlist-type=".*_params$" \
     --blocklist-file="${CUDA_HOME}/include/cuda.h" \
     --blocklist-type="^CUpti_Activity.*" \
     --blocklist-function="cuptiGetAutoBoostState" \
